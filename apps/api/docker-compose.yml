@@ -1,0 +1,29 @@
+
+version: '3.2'
+
+volumes:
+  database-data:
+
+services:
+  home-charts-db:
+    container_name: home-charts-database
+    image: "postgres"
+    ports:
+      - "5432:5432"
+    env_file:
+      - database.env
+    volumes:
+      - "database-data:/var/lib/postgresql/data"
+      - "./migrations/init_database.sql:/docker-entrypoint-initdb.d/0001.sql:ro"
+
+  home-charts-api:
+    container_name: home-charts-api
+    image: node:alpine
+    volumes: 
+      - ./:/app
+    working_dir: /app
+    ports: 
+      - 8080:8080
+    depends_on:
+      - home-charts-db
+    command: npm run watch
