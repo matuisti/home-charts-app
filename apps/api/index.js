@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const routes = require('./routes/router');
+const cors = require('cors');
+
+app.use(cors({ origin: true, credentials: true }));
 
 const logger = (req, res, next) => {
   console.log(`${res.statusCode} ${req.method} ${req.originalUrl}`)
