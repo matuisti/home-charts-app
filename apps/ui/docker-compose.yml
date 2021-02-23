@@ -1,0 +1,13 @@
+
+services:
+  home-charts-frontend:
+    container_name: home-charts-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+    ports:
+      - '80:80'
+    environment:
+      - NODE_ENV=production
