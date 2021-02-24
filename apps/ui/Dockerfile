@@ -2,8 +2,10 @@
 FROM node:15-alpine as build
 WORKDIR /app
 COPY . .
-RUN npm install
+RUN npm install --silent
+ENV NODE_OPTIONS=--max-old-space-size=4096
 RUN npm run build
+
 # production environment
 FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html
