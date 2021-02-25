@@ -2,9 +2,9 @@
 FROM node:15-alpine as build
 WORKDIR /app
 COPY . .
-RUN npm install --silent
 ENV GENERATE_SOURCEMAP=false
 ENV NODE_OPTIONS=--max-old-space-size=512
+RUN npm install --silent
 RUN npm run build
 
 # production environment
