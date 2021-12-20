@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 
 const Chart = styled('div')({
   width: '100%', 
-  height: 600,
+  height: '100%',
 });
 
 const LineChart = ({ elementId, data }) => {

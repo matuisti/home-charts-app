@@ -19,9 +19,17 @@ const ValueBox = styled(Paper)({
   padding: 20,
 });
 
+// pro max h - pro h = 82px
 const LineChartContainer = styled(Paper)({
   marginTop: 20,
   marginBottom: 40,
+  height: 585, // iPhone pro max height
+  '@media (max-height: 870px)': {
+    height: 503 // iPhone pro height
+  },
+  '@media (min-height: 1000px)': {
+    height: 700
+  }
 });
 
 const Overview = () => {
